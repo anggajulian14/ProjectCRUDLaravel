@@ -15,4 +15,14 @@ class DashboardController extends Controller
             'barang' => $barang,
         ]);
     }
+
+    public function home(Request $request)
+    {
+        $barang = Barang::count();
+
+        return view('dashboard.home', [
+            'title' => 'Dashboard',
+            'barang' => $barang,
+        ]);
+    }
 }

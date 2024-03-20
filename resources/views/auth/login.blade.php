@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | Andis Dev </title>
+    <title>{{ $title }} | Angga Julian </title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,10 +25,10 @@
 
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="/" class="h1"><b>Andis</b> Dev</a>
+                <a href="/" class="h1"><b>Angga</b> Julian</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+                <p class="login-box-msg">Login Sekarang</p>
                 <form class="needs-validation" novalidate action="/login" method="POST">
                     @csrf
                     <div class="input-group mb-3">
@@ -58,10 +58,10 @@
                         </div>
 
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
                         </div>
                         <p class="mb-0">
-                            <a href="/register" class="text-center">Register a new membership</a>
+                            <a href="/register" class="text-center">Register</a>
                         </p>
                     </div>
                 </form>

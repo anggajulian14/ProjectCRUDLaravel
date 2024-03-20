@@ -26,5 +26,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
+// route home
+Route::get('/home', [BarangController::class, 'home'])->middleware('auth');
+
 //route barang
 Route::resource('/barang', BarangController::class)->middleware('auth');

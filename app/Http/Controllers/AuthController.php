@@ -19,25 +19,35 @@ class AuthController extends Controller
     }
 
     public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required',
-            'password' => 'required'
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => 'required',
+        'password' => 'required'
+    ]);
 
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
 
-        User::where('email', $credentials);
+        // Ambil pengguna yang telah diautentikasi
+        $user = Auth::user();
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            Alert::success('Success', 'Login success !');
+        // Periksa role pengguna
+        if ($user->role === 'admin') {
+            // Jika pengguna adalah admin, arahkan ke dashboard admin
+            Alert::success('Success', 'Login success as admin!');
             return redirect()->intended('/dashboard');
         } else {
-            Alert::error('Error', 'Login failed !');
-            return redirect('/login');
+            // Jika pengguna adalah user biasa, arahkan ke halaman home
+            Alert::success('Success', 'Login success as user!');
+            return redirect()->intended('/home');
         }
+    } else {
+        // Jika kredensial tidak valid, kembali ke halaman login dengan pesan kesalahan
+        Alert::error('Error', 'Login failed!');
+        return redirect('/login');
     }
+}
+
 
     public function register()
     {
@@ -51,6 +61,7 @@ class AuthController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
+            'role' => 'required',
             'password' => 'required',
             'passwordConfirm' => 'required|same:password'
         ]);

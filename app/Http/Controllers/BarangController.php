@@ -15,10 +15,13 @@ class BarangController extends Controller
     public function index()
     {
         $barang = Barang::orderBy('name', 'asc')->get();
+        return view('barang.barang', ['barang' => $barang]);
+    }
 
-        return view('barang.barang', [
-            'barang' => $barang
-        ]);
+    public function home()
+    {
+        $barang = Barang::orderBy('name', 'asc')->get();
+        return view('dashboard.home', ['barang' => $barang]);
     }
 
     /**

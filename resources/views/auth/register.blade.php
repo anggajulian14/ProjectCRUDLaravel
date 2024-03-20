@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | Andis Dev</title>
+    <title>{{ $title }} | Angga Julian</title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
 
-    {{-- <link rel="stylesheet" href="/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
     <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
 
@@ -23,10 +23,10 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="/" class="h1"><b>Andis</b> Dev</a>
+                <a href="/" class="h1"><b>Angga</b> Julian</a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Register a new membership</p>
+                <p class="login-box-msg">Daftar Sekarang</p>
                 <form class="needs-validation" novalidate action="/register" method="POST">
                     @csrf
                     <div class="input-group mb-3">
@@ -50,6 +50,21 @@
                             </div>
                         </div>
                         @error('email')
+                            <span class="invalid-feedback text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="input-group mb-3">
+                        <select name="role" class="form-control @error('role') is-invalid @enderror" required>
+                            <option value="" selected disabled>Pilih Peran</option>
+                            <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                        @error('role')
                             <span class="invalid-feedback text-danger">{{ $message }}</span>
                         @enderror
                     </div>
@@ -90,12 +105,12 @@
                         </div> --}}
 
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
                         </div>
 
                     </div>
                 </form>
-                <a href="/login" class="text-center">I already have a membership</a>
+                <a href="/login" class="text-center">Sudah punya akun?</a>
             </div>
 
         </div>
@@ -106,7 +121,7 @@
 
     <script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    {{-- <script src="/assets/dist/js/adminlte.min.js"></script> --}}
+    <script src="/assets/dist/js/adminlte.min.js"></script> 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
